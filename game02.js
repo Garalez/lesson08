@@ -3,8 +3,8 @@
 const arrToGuess = [];
 const firstNumber = +prompt('первое число', '10');
 const secondNumber = +prompt('второе число', '20');
-const NumberSelected =  Math.floor(Math.random() * (secondNumber - firstNumber + 1)) + firstNumber;
-console.log(`Загаданное число ${NumberSelected}`);
+const numberSelected =  Math.floor(Math.random() * (secondNumber - firstNumber + 1)) + firstNumber;
+console.log(`Загаданное число ${numberSelected}`);
 let attemptsCount = (secondNumber - firstNumber) * 0.3;
 let attempts = 0;
 let correctGuess = false;
@@ -42,22 +42,22 @@ const updateGuessAttempts = () => {
 
 const displayResults = () => {
   if (correctGuess) {
-    alert(`Поздравляем! Вы угадали число ${NumberSelected} за ${attempts} попыток`);
+    alert(`Поздравляем! Вы угадали число ${numberSelected} за ${attempts} попыток`);
   } else {
-    alert(`Вы не угадали число ${NumberSelected} за ${attempts} попытки`);
+    alert(`Вы не угадали число ${numberSelected} за ${attempts} попытки`);
   }
 }
 
 const compareGuess = (guess) => {
-  if (guess === NumberSelected) {
+  if (guess === numberSelected) {
     correctGuess = true;
   }
 }
 
-const notifyUser = (userGuess, NumberSelected) => {
-  if (userGuess > NumberSelected) {
+const notifyUser = (userGuess, numberSelected) => {
+  if (userGuess > numberSelected) {
     alert(`Меньше!`);
-  } else if (userGuess < NumberSelected) {
+  } else if (userGuess < numberSelected) {
     alert(`Больше!`);
   }
 }
@@ -70,7 +70,7 @@ while (attempts <= attemptsCount && !correctGuess) {
   };
   if (checkGuessInRange(userGuess)) {
     if (checkUserGuess(userGuess)) {
-      notifyUser(userGuess, NumberSelected);
+      notifyUser(userGuess, numberSelected);
       addToArrToGuess(userGuess);
       compareGuess(userGuess);
       updateGuessAttempts();
